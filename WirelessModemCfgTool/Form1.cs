@@ -117,6 +117,7 @@ namespace WirelessModemCfgTool
                 MessageBox.Show("请选择端口并打开");
                 return;
             }
+            serialPort.WriteLine("get");
         }
 
         private void writecfg_Click(object sender, EventArgs e)
@@ -126,6 +127,9 @@ namespace WirelessModemCfgTool
                 MessageBox.Show("请选择端口并打开");
                 return;
             }
+            byte[] cmd = new byte[40];
+            string pcack = System.Text.Encoding.Default.GetString(cmd);
+            serialPort.WriteLine(pcack);
         }
 
         private void buttonFactoryReset_Click(object sender, EventArgs e)
@@ -135,6 +139,7 @@ namespace WirelessModemCfgTool
                 MessageBox.Show("请选择端口并打开");
                 return;
             }
+            serialPort.WriteLine("factoryreset");
         }
     }
 }
