@@ -199,6 +199,7 @@
             this.textBoxdestAddr.Size = new System.Drawing.Size(79, 21);
             this.textBoxdestAddr.TabIndex = 22;
             this.textBoxdestAddr.Text = "0";
+            this.textBoxdestAddr.TextChanged += new System.EventHandler(this.textBoxdestAddr_TextChanged);
             this.textBoxdestAddr.MouseLeave += new System.EventHandler(this.textBoxdestAddr_MouseLeave);
             // 
             // label7
@@ -238,6 +239,7 @@
             this.channel.Size = new System.Drawing.Size(79, 21);
             this.channel.TabIndex = 18;
             this.channel.Text = "0";
+            this.channel.TextChanged += new System.EventHandler(this.channel_TextChanged);
             this.channel.MouseLeave += new System.EventHandler(this.channel_MouseLeave);
             // 
             // label6

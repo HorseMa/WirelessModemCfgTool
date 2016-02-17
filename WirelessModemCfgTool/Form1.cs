@@ -153,13 +153,13 @@ namespace WirelessModemCfgTool
             hex = channel.Text;
             if (true == System.Text.RegularExpressions.Regex.IsMatch(hex, PATTERN))
             {
-                MessageBox.Show("请正确输入十六进制数字");
+                MessageBox.Show("请正确输入十六进制数字:00~FF");
                 channel.Text = "00";
             }
             int len = channel.TextLength;
             if (len != 2)
             {
-                MessageBox.Show("请输入正确的地址");
+                MessageBox.Show("请输入正确的地址:00~FF");
                 channel.Text = "00";
             }
         }
@@ -171,15 +171,39 @@ namespace WirelessModemCfgTool
             hex = textBoxdestAddr.Text;
             if (true == System.Text.RegularExpressions.Regex.IsMatch(hex, PATTERN))
             {
-                MessageBox.Show("请正确输入十六进制数字");
+                MessageBox.Show("请正确输入十六进制数字:0000~FFFF");
                 textBoxdestAddr.Text = "FFFF";
             }
 
             int len = textBoxdestAddr.TextLength;
             if (len != 4)
             {
-                MessageBox.Show("请输入正确的地址");
+                MessageBox.Show("请输入正确的地址:0000~FFFF");
                 textBoxdestAddr.Text = "FFFF";
+            }
+        }
+
+        private void textBoxdestAddr_TextChanged(object sender, EventArgs e)
+        {
+            string hex;
+
+            hex = textBoxdestAddr.Text;
+            if (true == System.Text.RegularExpressions.Regex.IsMatch(hex, PATTERN))
+            {
+                MessageBox.Show("请正确输入十六进制数字:0000~FFFF");
+                textBoxdestAddr.Text = "FFFF";
+            }
+        }
+
+        private void channel_TextChanged(object sender, EventArgs e)
+        {
+            string hex;
+
+            hex = channel.Text;
+            if (true == System.Text.RegularExpressions.Regex.IsMatch(hex, PATTERN))
+            {
+                MessageBox.Show("请正确输入十六进制数字:00~FF");
+                channel.Text = "00";
             }
         }
     }
