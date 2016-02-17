@@ -1,0 +1,9 @@
+E:\work\si4463透传\WirelessModemCfgTool\WirelessModemCfgTool\bin\Debug\WirelessModemCfgTool.exe.config
+E:\work\si4463透传\WirelessModemCfgTool\WirelessModemCfgTool\bin\Debug\WirelessModemCfgTool.exe
+E:\work\si4463透传\WirelessModemCfgTool\WirelessModemCfgTool\bin\Debug\WirelessModemCfgTool.pdb
+E:\work\si4463透传\WirelessModemCfgTool\WirelessModemCfgTool\obj\Debug\WirelessModemCfgTool.csprojResolveAssemblyReference.cache
+E:\work\si4463透传\WirelessModemCfgTool\WirelessModemCfgTool\obj\Debug\WirelessModemCfgTool.start.resources
+E:\work\si4463透传\WirelessModemCfgTool\WirelessModemCfgTool\obj\Debug\WirelessModemCfgTool.Properties.Resources.resources
+E:\work\si4463透传\WirelessModemCfgTool\WirelessModemCfgTool\obj\Debug\WirelessModemCfgTool.csproj.GenerateResource.Cache
+E:\work\si4463透传\WirelessModemCfgTool\WirelessModemCfgTool\obj\Debug\WirelessModemCfgTool.exe
+E:\work\si4463透传\WirelessModemCfgTool\WirelessModemCfgTool\obj\Debug\WirelessModemCfgTool.pdb
