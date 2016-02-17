@@ -42,7 +42,9 @@ namespace WirelessModemCfgTool
             paritybit.SelectedIndex = 0;
             databit.SelectedIndex = 3;
             stopbit.SelectedIndex = 0;
-
+            comboBoxairrate.SelectedIndex = 0;
+            textBoxdestAddr.Text = "0001";
+            comboBoxmode.SelectedIndex = 0;
         }
 
         private void serialportlist_MouseDown(object sender, MouseEventArgs e)
@@ -140,6 +142,44 @@ namespace WirelessModemCfgTool
                 return;
             }
             serialPort.WriteLine("factoryreset");
+        }
+
+        private void channel_MouseLeave(object sender, EventArgs e)
+        {
+            int tmp;
+            if (!int.TryParse(channel.Text, out tmp))
+            {
+                MessageBox.Show("请正确输入数字");
+                channel.Text = "0";
+            }
+            int i = Convert.ToInt32(channel.Text);
+            if ((i >= 0) && (i <= 255))
+            {
+
+            }
+            else
+            {
+                MessageBox.Show("信道范围：0~255");
+                channel.Text = "0";
+            }
+
+
+        }
+
+        private void textBoxdestAddr_MouseLeave(object sender, EventArgs e)
+        {
+            int tmp;
+            if (!int.TryParse(textBoxdestAddr.Text, out tmp))
+            {
+                MessageBox.Show("请正确输入数字");
+                textBoxdestAddr.Text = "0001";
+            }
+            int len = textBoxdestAddr.TextLength;
+            if ((len > 4)|| (len == 0))
+            {
+                MessageBox.Show("请输入正确的地址");
+                textBoxdestAddr.Text = "0001";
+            }
         }
     }
 }

@@ -46,7 +46,6 @@
             this.writecfg = new System.Windows.Forms.Button();
             this.channel = new System.Windows.Forms.TextBox();
             this.label6 = new System.Windows.Forms.Label();
-            this.airbaudrate = new System.Windows.Forms.TextBox();
             this.label5 = new System.Windows.Forms.Label();
             this.stopbit = new System.Windows.Forms.ComboBox();
             this.label4 = new System.Windows.Forms.Label();
@@ -59,6 +58,7 @@
             this.serialPort = new System.IO.Ports.SerialPort(this.components);
             this.serialportlist = new System.Windows.Forms.ComboBox();
             this.opendevice = new System.Windows.Forms.Button();
+            this.comboBoxairrate = new System.Windows.Forms.ComboBox();
             this.groupBoxinfo.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
@@ -136,6 +136,7 @@
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.comboBoxairrate);
             this.groupBox1.Controls.Add(this.comboBoxmode);
             this.groupBox1.Controls.Add(this.label8);
             this.groupBox1.Controls.Add(this.buttonFactoryReset);
@@ -145,7 +146,6 @@
             this.groupBox1.Controls.Add(this.writecfg);
             this.groupBox1.Controls.Add(this.channel);
             this.groupBox1.Controls.Add(this.label6);
-            this.groupBox1.Controls.Add(this.airbaudrate);
             this.groupBox1.Controls.Add(this.label5);
             this.groupBox1.Controls.Add(this.stopbit);
             this.groupBox1.Controls.Add(this.label4);
@@ -199,6 +199,7 @@
             this.textBoxdestAddr.Size = new System.Drawing.Size(79, 21);
             this.textBoxdestAddr.TabIndex = 22;
             this.textBoxdestAddr.Text = "0";
+            this.textBoxdestAddr.MouseLeave += new System.EventHandler(this.textBoxdestAddr_MouseLeave);
             // 
             // label7
             // 
@@ -237,6 +238,7 @@
             this.channel.Size = new System.Drawing.Size(79, 21);
             this.channel.TabIndex = 18;
             this.channel.Text = "0";
+            this.channel.MouseLeave += new System.EventHandler(this.channel_MouseLeave);
             // 
             // label6
             // 
@@ -247,14 +249,6 @@
             this.label6.TabIndex = 17;
             this.label6.Text = "无线信道";
             this.label6.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // airbaudrate
-            // 
-            this.airbaudrate.Location = new System.Drawing.Point(78, 139);
-            this.airbaudrate.Name = "airbaudrate";
-            this.airbaudrate.Size = new System.Drawing.Size(79, 21);
-            this.airbaudrate.TabIndex = 16;
-            this.airbaudrate.Text = "10000";
             // 
             // label5
             // 
@@ -395,6 +389,23 @@
             this.opendevice.UseVisualStyleBackColor = true;
             this.opendevice.Click += new System.EventHandler(this.opendevice_Click);
             // 
+            // comboBoxairrate
+            // 
+            this.comboBoxairrate.FormattingEnabled = true;
+            this.comboBoxairrate.Items.AddRange(new object[] {
+            "1k",
+            "2k",
+            "5k",
+            "8k",
+            "10k",
+            "15k",
+            "20k",
+            "25k"});
+            this.comboBoxairrate.Location = new System.Drawing.Point(78, 139);
+            this.comboBoxairrate.Name = "comboBoxairrate";
+            this.comboBoxairrate.Size = new System.Drawing.Size(79, 20);
+            this.comboBoxairrate.TabIndex = 26;
+            // 
             // start
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -433,7 +444,6 @@
         private System.Windows.Forms.Button writecfg;
         private System.Windows.Forms.TextBox channel;
         private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.TextBox airbaudrate;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.ComboBox stopbit;
         private System.Windows.Forms.Label label4;
@@ -449,6 +459,7 @@
         private System.IO.Ports.SerialPort serialPort;
         private System.Windows.Forms.Button opendevice;
         private System.Windows.Forms.ComboBox serialportlist;
+        private System.Windows.Forms.ComboBox comboBoxairrate;
     }
 }
 
