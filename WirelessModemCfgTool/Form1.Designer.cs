@@ -79,7 +79,7 @@
             this.textBoxhardwareversion.Name = "textBoxhardwareversion";
             this.textBoxhardwareversion.Size = new System.Drawing.Size(79, 21);
             this.textBoxhardwareversion.TabIndex = 3;
-            this.textBoxhardwareversion.Text = "10";
+            this.textBoxhardwareversion.Text = "MJ-MD1U10010";
             this.textBoxhardwareversion.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
             // labelsoftwareversion
@@ -98,7 +98,7 @@
             this.textBoxsoftwareversion.Name = "textBoxsoftwareversion";
             this.textBoxsoftwareversion.Size = new System.Drawing.Size(79, 21);
             this.textBoxsoftwareversion.TabIndex = 5;
-            this.textBoxsoftwareversion.Text = "10";
+            this.textBoxsoftwareversion.Text = "MJ-MD1U10010";
             this.textBoxsoftwareversion.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
             // labelsn

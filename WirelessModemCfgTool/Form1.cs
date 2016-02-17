@@ -110,7 +110,22 @@ namespace WirelessModemCfgTool
 
         private void serialPort_DataReceived(object sender, SerialDataReceivedEventArgs e)
         {
-
+            byte[] cmd = Convert.FromBase64String(serialPort.ReadLine());
+            if (cmd.Length == (12 + 12))//MJ-MD1U10010
+            {
+                baudrate.SelectedIndex = cmd[0] - 1;//串口波特率
+                paritybit.SelectedIndex = cmd[1] - 1;//串口校验位
+                databit.SelectedIndex = cmd[2] - 1;//串口数据位
+                stopbit.SelectedIndex = cmd[3] - 1;//串口停止位
+                comboBoxairrate.SelectedIndex = cmd[4] - 1;//空中波特率
+                byte[] tmp = new byte[10];//信道
+                Array.Copy(tmp, 0, cmd, 5, 2);
+                channel.Text = tmp.ToString();
+                tmp = new byte[10];//目标地址
+                Array.Copy(tmp, 0, cmd, 7, 4);
+                textBoxdestAddr.Text = tmp.ToString(); ;
+                comboBoxmode.SelectedIndex = cmd[11] - 1;//通信模式
+            }
         }
 
         private void readcfg_Click(object sender, EventArgs e)
@@ -131,7 +146,19 @@ namespace WirelessModemCfgTool
                 return;
             }
             byte[] cmd = new byte[40];
-
+            cmd[0] = (byte)(baudrate.SelectedIndex + 1);//串口波特率
+            cmd[1] = (byte)(paritybit.SelectedIndex + 1);//串口校验位
+            cmd[2] = (byte)(databit.SelectedIndex + 1);//串口数据位
+            cmd[3] = (byte)(stopbit.SelectedIndex + 1);//串口停止位
+            cmd[4] = (byte)(comboBoxairrate.SelectedIndex + 1);//空中波特率
+            byte[] tmp = new byte[10];
+            tmp = System.Text.Encoding.ASCII.GetBytes(channel.Text);//信道
+            Array.Copy(cmd, 5, tmp, 0, 2);
+            tmp = new byte[10];
+            tmp = System.Text.Encoding.ASCII.GetBytes(textBoxdestAddr.Text);//目标地址
+            Array.Copy(cmd, 7, tmp, 0, 4);
+            tmp = new byte[10];
+            cmd[11] = (byte)(comboBoxmode.SelectedIndex + 1);//通信模式
             string pcack = System.Text.Encoding.Default.GetString(cmd);
             serialPort.WriteLine(pcack);
         }
