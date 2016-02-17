@@ -43,7 +43,8 @@ namespace WirelessModemCfgTool
             databit.SelectedIndex = 3;
             stopbit.SelectedIndex = 0;
             comboBoxairrate.SelectedIndex = 0;
-            textBoxdestAddr.Text = "0001";
+            textBoxdestAddr.Text = "FFFF";
+            channel.Text = "00";
             comboBoxmode.SelectedIndex = 0;
         }
 
@@ -130,6 +131,7 @@ namespace WirelessModemCfgTool
                 return;
             }
             byte[] cmd = new byte[40];
+
             string pcack = System.Text.Encoding.Default.GetString(cmd);
             serialPort.WriteLine(pcack);
         }
@@ -143,42 +145,41 @@ namespace WirelessModemCfgTool
             }
             serialPort.WriteLine("factoryreset");
         }
-
+        public const string PATTERN = @"([^A-Fa-f0-9]|\s+?)+";
         private void channel_MouseLeave(object sender, EventArgs e)
         {
-            int tmp;
-            if (!int.TryParse(channel.Text, out tmp))
-            {
-                MessageBox.Show("请正确输入数字");
-                channel.Text = "0";
-            }
-            int i = Convert.ToInt32(channel.Text);
-            if ((i >= 0) && (i <= 255))
-            {
+            string hex;
 
-            }
-            else
+            hex = channel.Text;
+            if (true == System.Text.RegularExpressions.Regex.IsMatch(hex, PATTERN))
             {
-                MessageBox.Show("信道范围：0~255");
-                channel.Text = "0";
+                MessageBox.Show("请正确输入十六进制数字");
+                channel.Text = "00";
             }
-
-
+            int len = channel.TextLength;
+            if (len != 2)
+            {
+                MessageBox.Show("请输入正确的地址");
+                channel.Text = "00";
+            }
         }
 
         private void textBoxdestAddr_MouseLeave(object sender, EventArgs e)
         {
-            int tmp;
-            if (!int.TryParse(textBoxdestAddr.Text, out tmp))
+            string hex;
+            
+            hex = textBoxdestAddr.Text;
+            if (true == System.Text.RegularExpressions.Regex.IsMatch(hex, PATTERN))
             {
-                MessageBox.Show("请正确输入数字");
-                textBoxdestAddr.Text = "0001";
+                MessageBox.Show("请正确输入十六进制数字");
+                textBoxdestAddr.Text = "FFFF";
             }
+
             int len = textBoxdestAddr.TextLength;
-            if ((len > 4)|| (len == 0))
+            if (len != 4)
             {
                 MessageBox.Show("请输入正确的地址");
-                textBoxdestAddr.Text = "0001";
+                textBoxdestAddr.Text = "FFFF";
             }
         }
     }
