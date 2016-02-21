@@ -80,7 +80,7 @@ namespace WirelessModemCfgTool
                 serialPort.DataBits = 8;
                 serialPort.StopBits = StopBits.One;
                 serialPort.Parity = Parity.None;
-                serialPort.NewLine = "\r\n";
+                serialPort.NewLine = "\0";
                 try
                 {
                     serialPort.Open();
@@ -110,8 +110,10 @@ namespace WirelessModemCfgTool
 
         private void serialPort_DataReceived(object sender, SerialDataReceivedEventArgs e)
         {
-            byte[] cmd = Convert.FromBase64String(serialPort.ReadLine());
-            if (cmd.Length == (12 + 12))//MJ-MD1U10010
+            //string str;
+            //str = serialPort.ReadLine();
+            byte[] cmd = Encoding.UTF8.GetBytes(serialPort.ReadLine()); ;
+            if (cmd.Length >= (12 + 12 + 12))//MJ-MD1U10010
             {
                 baudrate.SelectedIndex = cmd[0] - 1;//串口波特率
                 paritybit.SelectedIndex = cmd[1] - 1;//串口校验位
@@ -119,12 +121,21 @@ namespace WirelessModemCfgTool
                 stopbit.SelectedIndex = cmd[3] - 1;//串口停止位
                 comboBoxairrate.SelectedIndex = cmd[4] - 1;//空中波特率
                 byte[] tmp = new byte[10];//信道
-                Array.Copy(tmp, 0, cmd, 5, 2);
-                channel.Text = tmp.ToString();
+                Array.Copy(cmd, 5, tmp, 0, 2);
+                channel.Text = System.Text.Encoding.Default.GetString(tmp);
                 tmp = new byte[10];//目标地址
-                Array.Copy(tmp, 0, cmd, 7, 4);
-                textBoxdestAddr.Text = tmp.ToString(); ;
+                Array.Copy(cmd, 7, tmp, 0, 4);
+                textBoxdestAddr.Text = System.Text.Encoding.Default.GetString(tmp); ;
                 comboBoxmode.SelectedIndex = cmd[11] - 1;//通信模式
+                tmp = new byte[13];//硬件版本
+                Array.Copy(cmd, 12, tmp, 0, 12);
+                textBoxhardwareversion.Text = System.Text.Encoding.Default.GetString(tmp);
+                tmp = new byte[13];//软件版本
+                Array.Copy(cmd, 24, tmp, 0, 12);
+                textBoxsoftwareversion.Text = System.Text.Encoding.Default.GetString(tmp);
+                tmp = new byte[13];//出厂编号
+                Array.Copy(cmd, 36, tmp, 0, 12);
+                textBoxsn.Text = System.Text.Encoding.Default.GetString(tmp);
             }
         }
 
