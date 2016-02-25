@@ -157,20 +157,28 @@ namespace WirelessModemCfgTool
                 return;
             }
             byte[] cmd = new byte[40];
-            cmd[0] = (byte)(baudrate.SelectedIndex + 1);//串口波特率
-            cmd[1] = (byte)(paritybit.SelectedIndex + 1);//串口校验位
-            cmd[2] = (byte)(databit.SelectedIndex + 1);//串口数据位
-            cmd[3] = (byte)(stopbit.SelectedIndex + 1);//串口停止位
-            cmd[4] = (byte)(comboBoxairrate.SelectedIndex + 1);//空中波特率
+            cmd[0] = (byte)'c';
+            cmd[1] = (byte)'f';
+            cmd[2] = (byte)'g';
+            cmd[3] = (byte)' ';
+            cmd[4] = (byte)'s';
+            cmd[5] = (byte)'e';
+            cmd[6] = (byte)'t';
+            cmd[7] = (byte)(baudrate.SelectedIndex + 1);//串口波特率
+            cmd[8] = (byte)(paritybit.SelectedIndex + 1);//串口校验位
+            cmd[9] = (byte)(databit.SelectedIndex + 1);//串口数据位
+            cmd[10] = (byte)(stopbit.SelectedIndex + 1);//串口停止位
+            cmd[11] = (byte)(comboBoxairrate.SelectedIndex + 1);//空中波特率
             byte[] tmp = new byte[10];
             tmp = System.Text.Encoding.ASCII.GetBytes(channel.Text);//信道
-            Array.Copy(cmd, 5, tmp, 0, 2);
+            Array.Copy(tmp, 0, cmd, 12, 2);
             tmp = new byte[10];
             tmp = System.Text.Encoding.ASCII.GetBytes(textBoxdestAddr.Text);//目标地址
-            Array.Copy(cmd, 7, tmp, 0, 4);
+            Array.Copy(tmp, 0, cmd, 14, 4);
             tmp = new byte[10];
-            cmd[11] = (byte)(comboBoxmode.SelectedIndex + 1);//通信模式
-            string pcack = System.Text.Encoding.Default.GetString(cmd);
+            cmd[18] = (byte)(comboBoxmode.SelectedIndex + 1);//通信模式
+            cmd[19] = (byte)'\0';
+            string pcack = System.Text.Encoding.UTF8.GetString(cmd);
             serialPort.WriteLine(pcack);
         }
 
@@ -181,7 +189,7 @@ namespace WirelessModemCfgTool
                 MessageBox.Show("请选择端口并打开");
                 return;
             }
-            serialPort.WriteLine("factoryreset");
+            serialPort.WriteLine("factory reset");
         }
         public const string PATTERN = @"([^A-Fa-f0-9]|\s+?)+";
         private void channel_MouseLeave(object sender, EventArgs e)
