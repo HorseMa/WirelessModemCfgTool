@@ -38,9 +38,9 @@ namespace WirelessModemCfgTool
             System.Windows.Forms.Control.CheckForIllegalCrossThreadCalls = false;
             serialportlist.Show();
 
-            baudrate.SelectedIndex = 6;
+            baudrate.SelectedIndex = 0;
             paritybit.SelectedIndex = 0;
-            databit.SelectedIndex = 3;
+            databit.SelectedIndex = 0;
             stopbit.SelectedIndex = 0;
             comboBoxairrate.SelectedIndex = 0;
             textBoxdestAddr.Text = "FFFF";

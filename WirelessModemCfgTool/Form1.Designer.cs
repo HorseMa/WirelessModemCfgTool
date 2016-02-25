@@ -37,6 +37,7 @@
             this.textBoxsn = new System.Windows.Forms.TextBox();
             this.groupBoxinfo = new System.Windows.Forms.GroupBox();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.comboBoxairrate = new System.Windows.Forms.ComboBox();
             this.comboBoxmode = new System.Windows.Forms.ComboBox();
             this.label8 = new System.Windows.Forms.Label();
             this.buttonFactoryReset = new System.Windows.Forms.Button();
@@ -58,7 +59,6 @@
             this.serialPort = new System.IO.Ports.SerialPort(this.components);
             this.serialportlist = new System.Windows.Forms.ComboBox();
             this.opendevice = new System.Windows.Forms.Button();
-            this.comboBoxairrate = new System.Windows.Forms.ComboBox();
             this.groupBoxinfo.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
@@ -161,6 +161,23 @@
             this.groupBox1.TabIndex = 9;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "配置";
+            // 
+            // comboBoxairrate
+            // 
+            this.comboBoxairrate.FormattingEnabled = true;
+            this.comboBoxairrate.Items.AddRange(new object[] {
+            "1k",
+            "2k",
+            "5k",
+            "8k",
+            "10k",
+            "15k",
+            "20k",
+            "25k"});
+            this.comboBoxairrate.Location = new System.Drawing.Point(78, 139);
+            this.comboBoxairrate.Name = "comboBoxairrate";
+            this.comboBoxairrate.Size = new System.Drawing.Size(79, 20);
+            this.comboBoxairrate.TabIndex = 26;
             // 
             // comboBoxmode
             // 
@@ -270,8 +287,9 @@
             this.stopbit.FormattingEnabled = true;
             this.stopbit.Items.AddRange(new object[] {
             "1",
-            "1.5",
-            "2"});
+            "0.5",
+            "2",
+            "1.5"});
             this.stopbit.Location = new System.Drawing.Point(78, 110);
             this.stopbit.Name = "stopbit";
             this.stopbit.Size = new System.Drawing.Size(79, 20);
@@ -290,10 +308,8 @@
             // 
             this.databit.FormattingEnabled = true;
             this.databit.Items.AddRange(new object[] {
-            "5",
-            "6",
-            "7",
-            "8"});
+            "8",
+            "9"});
             this.databit.Location = new System.Drawing.Point(78, 83);
             this.databit.Name = "databit";
             this.databit.Size = new System.Drawing.Size(79, 20);
@@ -313,10 +329,8 @@
             this.paritybit.FormattingEnabled = true;
             this.paritybit.Items.AddRange(new object[] {
             "None",
-            "Odd",
             "Even",
-            "Mark",
-            "Space"});
+            "Odd"});
             this.paritybit.Location = new System.Drawing.Point(78, 55);
             this.paritybit.Name = "paritybit";
             this.paritybit.Size = new System.Drawing.Size(79, 20);
@@ -335,9 +349,6 @@
             // 
             this.baudrate.FormattingEnabled = true;
             this.baudrate.Items.AddRange(new object[] {
-            "100",
-            "300",
-            "600",
             "1200",
             "2400",
             "4800",
@@ -347,9 +358,7 @@
             "38400",
             "56000",
             "57600",
-            "115200",
-            "128000",
-            "256000"});
+            "115200"});
             this.baudrate.Location = new System.Drawing.Point(78, 28);
             this.baudrate.Name = "baudrate";
             this.baudrate.Size = new System.Drawing.Size(79, 20);
@@ -390,23 +399,6 @@
             this.opendevice.Text = "打开端口";
             this.opendevice.UseVisualStyleBackColor = true;
             this.opendevice.Click += new System.EventHandler(this.opendevice_Click);
-            // 
-            // comboBoxairrate
-            // 
-            this.comboBoxairrate.FormattingEnabled = true;
-            this.comboBoxairrate.Items.AddRange(new object[] {
-            "1k",
-            "2k",
-            "5k",
-            "8k",
-            "10k",
-            "15k",
-            "20k",
-            "25k"});
-            this.comboBoxairrate.Location = new System.Drawing.Point(78, 139);
-            this.comboBoxairrate.Name = "comboBoxairrate";
-            this.comboBoxairrate.Size = new System.Drawing.Size(79, 20);
-            this.comboBoxairrate.TabIndex = 26;
             // 
             // start
             // 
